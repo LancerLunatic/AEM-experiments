@@ -1,0 +1,25 @@
+// create symbolic link to shared library
+ln -s /path/to/shared/library /apps/myproject/libraries/shared-library
+
+// use the symbolic link in your code
+import com.example.thirdparty.PhoneNumberService;
+import com.example.myproject.Customer;
+
+// create a new instance of the PhoneNumberService class
+PhoneNumberService phoneNumberService = new PhoneNumberService();
+
+// get a list of customers from the third-party affiliate
+List<Customer> customers = phoneNumberService.getCustomers();
+
+// iterate over the list of customers and retrieve their phone numbers
+for (Customer customer : customers) {
+  // retrieve the phone number for the customer using the shared library
+  String phoneNumber = getPhoneNumber(customer.getId());
+  // do something with the phone number
+}
+
+// helper method for retrieving phone numbers using the shared library
+private String getPhoneNumber(String customerId) {
+  // use the shared library to retrieve the phone number for the specified customer
+  return SharedLibrary.getPhoneNumber(customerId);
+}
